@@ -1,0 +1,9 @@
+server:
+  port: 5678
+spring:
+  application:
+    name: sidecar
+
+sidecar:
+  port: 80
+  health-uri: http://lumen-service:80/health
