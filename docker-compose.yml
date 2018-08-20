@@ -1,0 +1,18 @@
+version: "3"
+services:
+    lumen-service:
+        image: craftcodecrew/sidecar-tutorial-lumen-service
+        ports:
+            - "8000:80"
+
+    lumen-service-sidecar:
+        image: craftcodecrew/sidecar-tutorial-lumen-service-sidecar
+        environment:
+            - EUREKA_URI=http://eureka-server:8761/eureka
+            - SIDECAR_PORT=80
+            - SIDECAR_HEALTH_URI=http://lumen-service:80/health
+
+    eureka-server:
+        image: craftcodecrew/sidecar-tutorial-eureka-server
+        ports:
+            - "8761:8761"

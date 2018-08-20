@@ -16,5 +16,7 @@ $router->get('/', function () use ($router) {
 });
 
 $router->group(['prefix' => 'health'], function () use ($router) {
+
     $router->get('',  ['uses' => 'HealthController@heartbeat']);
+
 });

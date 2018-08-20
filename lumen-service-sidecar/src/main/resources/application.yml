@@ -1,9 +1,18 @@
 server:
   port: 5678
+
 spring:
   application:
-    name: sidecar
+    name: lumen-service
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
 
 sidecar:
-  port: 80
-  health-uri: http://lumen-service:80/health
+  port: ${SIDECAR_PORT:8000}
+  health-uri: ${SIDECAR_HEALTH_URI:http://localhost:8000/health}
+  home-page-uri: ${SIDECAR_HOMEPAGE_URI:http://localhost:8000/}
